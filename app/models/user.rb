@@ -5,4 +5,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :todos
+  has_many :user_roles
+
+  def admin?
+  	if self.role = 'admin'
+  		true
+  	else
+  		false
+  	end
+  end
 end
