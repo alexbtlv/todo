@@ -4,16 +4,26 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "todo-codecademy" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
-
-    <%= yield %>
+  <body class="<%= controller_name %> <%= action_name %>">
+    <div class="row">
+      <div id="wrapper">
+        <div class="small-12 small-centered medium-8 medium-centered large-6 large-centered column">
+          <%= render partial: "layouts/navbar" %>
+          <%= render partial: "layouts/flash" %>
+          <div id="content">
+            <%= yield %>
+          </div>
+        </div>
+        <%= render partial: "layouts/footer" %>
+      </div>
+    </div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>

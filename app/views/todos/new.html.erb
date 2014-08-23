@@ -1,0 +1,7 @@
+<div>
+	<%= form_for(@todo) do |f| %>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+		<%= f.submit "Post", class: "button round expand" %>
+	<% end %>
+</div>
