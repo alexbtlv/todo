@@ -15,7 +15,7 @@
         <li class="has-dropdown">
           <a href="#"><i class="fa fa-lg"><%= current_user.name.split.map(&:capitalize)*' ' %></i></a>
           <ul class="dropdown list-group">
-            <li></li>
+            <li><%= link_to content_tag(:i, "Sign Out", :class => "fa fa-sign-out fa-lg"), destroy_user_session_path,  method: :delete %></li>
           </ul>
         </li>
         <% else %>

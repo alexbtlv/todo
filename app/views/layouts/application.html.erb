@@ -12,18 +12,18 @@
   </head>
 
   <body class="<%= controller_name %> <%= action_name %>">
-    <div class="row">
-      <div id="wrapper">
-        <div class="small-12 small-centered medium-8 medium-centered large-6 large-centered column">
+    <div id="wrapper" class="row">
+      <div class="small-12 small-centered medium-8 medium-centered large-6 large-centered column">
+        <% if controller_name == 'todos' %>
           <%= render partial: "layouts/navbar" %>
-          <%= render partial: "layouts/flash" %>
-          <div id="content">
-            <%= yield %>
-          </div>
+        <% end %>
+        <%= render partial: "layouts/flash" %>
+        <div id="content">
+          <%= yield %>
         </div>
-        <%= render partial: "layouts/footer" %>
       </div>
     </div>
+    <%= render partial: "layouts/footer" %>
     <%= javascript_include_tag "application" %>
   </body>
 </html>

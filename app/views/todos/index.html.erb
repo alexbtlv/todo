@@ -1,29 +1,30 @@
-<div>
-	<span class="label secondary">Todo:</span>
-</div>
+
 <div id="todo">
 <% @todos.each do |todo| %>
 	<div class="row" id="todo_item">
 		<div class="small-10 column">
-			<h5><%= link_to content_tag(:i, todo.name.capitalize, :class=>"fa fa-hand-o-right fa-lg"), todo_path(todo) %></h5>
+			<h6><%= link_to content_tag(:i, todo.name.capitalize, :class=>"fa fa-hand-o-right fa-lg"), todo_path(todo) %></h6>
 		</div>
-		<div class="small-2 column">
+		<div class="small-1 column">
+			<%= link_to content_tag(:i, '', :class => "fa fa-cog fa-lg"), edit_todo_path(todo) %>
+		</div>
+		<div class="small-1 column">
 			<%= link_to content_tag(:i, '', :class => "fa fa-check-square-o fa-lg"), complete_todo_path(todo), method: :put %>
 		</div>
 		<hr />
 	</div>
 <% end %>
-<div>
-	<span class="label secondary">Completed:</span>
-</div>
 <div id="completes" class="content">
 	<% @completes.each do |completed| %>
 		<div class="row">
 			<div class="small-10 column">
-				<h5><%= link_to content_tag(:i, completed.name.capitalize, :class=>"fa fa-check-square-o fa-lg"), todo_path(completed) %></h5>
+				<h6><%= link_to content_tag(:i, completed.name.capitalize, :class=>"fa fa-check-square-o fa-lg"), todo_path(completed) %></h6>
 			</div>
-			<div class="small-2 column">
-				<%= link_to "Undo",  undo_todo_path(completed), method: :put %>
+			<div class="small-1 column">
+				<%= link_to content_tag(:i, '', :class => "fa fa-undo fa-lg" ),  undo_todo_path(completed), method: :put %>
+			</div>
+			<div class="small-1 column">
+				<%= link_to content_tag(:i, '', :class => "fa fa-trash-o fa-lg"), completed, method: :delete, data: { confirm: "Are you sure?" } %>
 			</div>
 			<hr />
 		</div>
