@@ -41,3 +41,22 @@ html, body {
 #content {
     padding-bottom: $footer_height; /* ATTENTION! padding-bottom should be equal to the footer height (this keeps the footer from overlapping the content) */
 }
+
+.has-tip {
+	border-bottom: none;
+	cursor: pointer;
+}
+
+.has-tip:hover, .has-tip:focus {
+	border-bottom: none;
+}
+
+
+
+
+
+
+
+
+
+
