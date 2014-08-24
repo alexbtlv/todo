@@ -30,7 +30,7 @@
 
       <!-- Left Nav Section -->
       <ul class="left">
-        <li><%= link_to  content_tag(:i, '',:class => "fa fa-plus fa-lg"), new_todo_path %></li>
+        <li><%= link_to  content_tag(:i, '',:class => "fa fa-plus fa-lg"), new_todo_path, id: "new_link",remote: true %></li>
       </ul>
     </section>
   </nav>

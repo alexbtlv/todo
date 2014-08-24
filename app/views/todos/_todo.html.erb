@@ -1,1 +1,20 @@
-<h2><%= todo.name %></h2>
+<div class="row todos" id="<%= dom_id(todo) %>">
+	<div class="small-10 column">
+		<h6><%= content_tag(:i, todo.name.capitalize, :class=>"fa fa-hand-o-right fa-lg")%></h6>
+	</div>
+	<div class="small-1 column">
+		<%= link_to edit_todo_path(todo) do %>
+			<span data-tooltip aria-haspopup="true" class="has-tip" title="Edit">
+				<%= content_tag(:i, '', :class => "fa fa-cog fa-lg") %>
+			</span>
+		<% end %>
+	</div>
+	<div class="small-1 column">
+		<%= link_to complete_todo_path(todo), method: :put, remote: true do %>
+			<span data-tooltip aria-haspopup="true" class="has-tip" title="Mark as completed!">
+				<%= content_tag(:i, '', :class => "fa fa-check-square-o fa-lg") %>
+			</span>
+		<% end %>
+	</div>
+	<hr />
+</div>

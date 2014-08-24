@@ -10,11 +10,14 @@
 	margin-top: 20px;
 }
 
-#completes a {
+#completes {
 	.has-tip {
 		color: #ccc;
 		cursor: pointer;
 	}
-	color: #ccc
+	a, h6 {
+		color: #ccc;
+	}
+	color: #ccc;
 }
 

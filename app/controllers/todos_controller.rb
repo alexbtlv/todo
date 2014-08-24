@@ -25,10 +25,10 @@ class TodosController < ApplicationController
 		respond_to do |format|
 			if @todo.save
 				format.html { redirect_to todos_path, notice: "Task was sucessfully created"}
-				format.json { render :index, status: :created }
+				format.js { }
 			else
 				format.html { render :new }
-				format.json { render json: @todo.errors, status: :unprocessable_entity }
+				format.js { }
 			end
 		end
 	end
@@ -37,28 +37,30 @@ class TodosController < ApplicationController
 		respond_to do |format|
 	      if @todo.update(todo_params)
 	        format.html { redirect_to todos_path, notice: 'Task was successfully updated.' }
-	        format.json { render :index, status: :ok, location: @todo }
+	        format.js { }
 	      else
 	        format.html { render :edit }
-	        format.json { render json: @todo.errors, status: :unprocessable_entity }
+	        format.js { }
 	      end
 	    end
 	end
 
 	def destroy
 		@todo.destroy
-    respond_to do |format|
-      format.html { redirect_to todos_path, notice: 'Task was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+		
+	    respond_to do |format|
+	      format.html { redirect_to todos_path, notice: 'Task was successfully destroyed.' }
+	      format.js { }
+	    end
 	end
 
 	def complete
+		@completes = Todo.where(completed: true).all
 		@todo.toggle_completion!
 		
 		respond_to do |format|
 			format.html { redirect_to todos_path, notice: "Yay!" }
-			format.js
+			format.js {  }
 		end
 	end
 

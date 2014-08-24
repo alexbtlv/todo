@@ -1,48 +1,7 @@
 
 <div id="todo">
-<% @todos.each do |todo| %>
-	<div class="row" id="todo_item">
-		<div class="small-10 column">
-			<h6><%= link_to content_tag(:i, todo.name.capitalize, :class=>"fa fa-hand-o-right fa-lg"), todo_path(todo) %></h6>
-		</div>
-		<div class="small-1 column">
-			<%= link_to edit_todo_path(todo) do %>
-				<span data-tooltip aria-haspopup="true" class="has-tip" title="Edit">
-					<%= content_tag(:i, '', :class => "fa fa-cog fa-lg") %>
-				</span>
-			<% end %>
-		</div>
-		<div class="small-1 column">
-			<%= link_to complete_todo_path(todo), method: :put do %>
-				<span data-tooltip aria-haspopup="true" class="has-tip" title="Mark as completed!">
-					<%= content_tag(:i, '', :class => "fa fa-check-square-o fa-lg") %>
-				</span>
-			<% end %>
-		</div>
-		<hr />
-	</div>
-<% end %>
-<div id="completes" class="content">
-	<% @completes.each do |completed| %>
-		<div class="row">
-			<div class="small-10 column">
-				<h6><%= link_to content_tag(:i, completed.name.capitalize, :class=>"fa fa-check-square-o fa-lg"), todo_path(completed) %></h6>
-			</div>
-			<div class="small-1 column">
-				<%= link_to undo_todo_path(completed), method: :put do %>
-				<span data-tooltip aria-haspopup="true" class="has-tip" title="Undo">
-					<%= content_tag(:i, '', :class => "fa fa-undo fa-lg" ) %>
-				</span>
-				<% end %>
-			</div>
-			<div class="small-1 column">
-				<%= link_to completed, method: :delete, data: { confirm: "Are you sure?" } do %>
-					<span data-tooltip aria-haspopup="true" class="has-tip" title="Delete">
-						<%= content_tag(:i, '', :class => "fa fa-trash-o fa-lg") %>
-					</span>
-				<% end %>
-			</div>
-			<hr />
-		</div>
-	<% end %>
+	<%= render @todos %>
+</div>
+<div id="completes">
+	<%= render partial: "completes" %>
 </div>
