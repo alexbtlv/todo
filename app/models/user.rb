@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :user_roles
 
   before_create :downcase_name, :downcase_email
+
+  Roles = %w[admin default]
 
   def to_param
     name
@@ -22,10 +25,6 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-  	if self.role = 'admin'
-  		true
-  	else
-  		false
-  	end
+    self.role == 'admin'
   end
 end

@@ -2,6 +2,7 @@
 	<div class="small-10 column">
 		<h6><%= content_tag(:i, todo.name.capitalize, :class=>"fa fa-hand-o-right fa-lg")%></h6>
 	</div>
+	
 	<div class="small-1 column">
 		<%= link_to edit_todo_path(todo) do %>
 			<span title="Edit">
@@ -9,6 +10,7 @@
 			</span>
 		<% end %>
 	</div>
+	
 	<div class="small-1 column">
 		<%= link_to complete_todo_path(todo), method: :put, remote: true do %>
 			<span title="Mark as completed!">

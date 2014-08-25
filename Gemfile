@@ -8,6 +8,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder'
 gem 'devise'
+gem "rolify"
 gem 'cancan'
 gem 'foundation-rails'
 gem 'font-awesome-rails'
