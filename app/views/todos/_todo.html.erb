@@ -1,10 +1,11 @@
+<div class="row" id="edit_form_<%= dom_id(todo) %>"></div>
 <div class="row todos" id="<%= dom_id(todo) %>">
 	<div class="small-10 column">
 		<h6><%= content_tag(:i, todo.name.capitalize, :class=>"fa fa-hand-o-right fa-lg")%></h6>
 	</div>
 	<% if current_user.admin? %>
 		<div class="small-1 column">
-			<%= link_to edit_todo_path(todo) do %>
+			<%= link_to edit_todo_path(todo), remote: true do %>
 				<span title="Edit">
 					<%= content_tag(:i, '', :class => "fa fa-cog fa-lg") %>
 				</span>

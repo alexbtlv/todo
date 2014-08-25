@@ -1,5 +1,13 @@
 <%= form_for @todo, remote: true do |f| %>
-	<%= f.label :name %>
-	<%= f.text_field :name %>
-	<%= f.submit "Post", class: "button expand" %>
+	<div class="row collapse">
+		<div class="small-1 column">
+			<%= f.label "todo:", :class => "left inline" %>
+		</div>
+		<div class="small-8 column">
+			<%= f.text_field :name, :id => "right-label", autofocus: true %>
+		</div>
+		<div class="small-3 column">
+			<%= f.submit "Save", class: "button postfix" %>
+		</div>
+	</div>
 <% end %>
