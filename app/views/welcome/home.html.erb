@@ -1,4 +1,16 @@
 <div class="row">
-	<h2>Hello!</h2>
-	<p>This is a todo app for codecademy coding challenge!</p>
+	<div class="small-12 column">
+		<h2 class="text-center">Hey!</h2>
+		<p class="text-center">This is a simple todo rails app for CodeCademy coding challenge by Alexander Batalov</p>
+	</div>
+	<hr />
+	<div class="small-6 column">
+		<%= link_to "Sign Up", new_user_registration_path, class: "button radius expand" %>
+	</div>
+	<div class="small-6 column">
+		<%= link_to "Sign In", new_user_session_path,  class: "button secondary radius expand" %>
+	</div>
+	<div class="small-12">
+		<p class="text-center" style="color:red">Notice: This app is for demostration purposes only. Regular users can only create and complete TODO items. To be able update or delete TODO's user should have admin rights.</p>
+	</div>
 </div>
