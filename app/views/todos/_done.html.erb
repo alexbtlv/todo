@@ -1,0 +1,20 @@
+<div class="row" id="<%= dom_id(done) %>">
+	<div class="small-10 column">
+		<h6><%= content_tag(:i, done.name.capitalize, :class=>"fa fa-check-square-o fa-lg") %></h6>
+	</div>
+	<div class="small-1 column">
+		<%= link_to undo_todo_path(done), method: :put, remote: true  do %>
+		<span title="Undo">
+			<%= content_tag(:i, '', :class => "fa fa-undo fa-lg" ) %>
+		</span>
+		<% end %>
+	</div>
+	<div class="small-1 column">
+		<%= link_to done, method: :delete, data: { confirm: "Are you sure?" }, remote: true do %>
+			<span title="Delete">
+				<%= content_tag(:i, '', :class => "fa fa-trash-o fa-lg") %>
+			</span>
+		<% end %>
+	</div>
+	<hr />
+</div>

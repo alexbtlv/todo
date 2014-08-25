@@ -1,2 +1,2 @@
-$('.todos #todo_<%= @todo.id %>').remove();
-$('#completes').append("<%= j render partial: 'completes' %>");
+$('#todo_<%= @todo.id %>').remove();
+$('#dones').append("<%= j render partial: 'done', locals: { done: @done} %>");

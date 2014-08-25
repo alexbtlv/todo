@@ -2,6 +2,6 @@
 <div id="todo">
 	<%= render @todos %>
 </div>
-<div id="completes">
-	<%= render partial: "completes" %>
+<div id="dones">
+	<%= render partial: 'dones', locals: { dones: @dones } %>
 </div>

@@ -4,7 +4,7 @@ class TodosController < ApplicationController
 	
 	def index
 		@todos = Todo.where(completed: false).all
-		@completes = Todo.where(completed: true).all
+		@dones = Todo.where(completed: true).all
 	end
 
 	def new
@@ -47,7 +47,7 @@ class TodosController < ApplicationController
 
 	def destroy
 		@todo.destroy
-		
+
 	    respond_to do |format|
 	      format.html { redirect_to todos_path, notice: 'Task was successfully destroyed.' }
 	      format.js { }
@@ -55,9 +55,9 @@ class TodosController < ApplicationController
 	end
 
 	def complete
-		@completes = Todo.where(completed: true).all
+		#@dones = Todo.where(completed: true).all
 		@todo.toggle_completion!
-		
+		@done = @todo
 		respond_to do |format|
 			format.html { redirect_to todos_path, notice: "Yay!" }
 			format.js {  }

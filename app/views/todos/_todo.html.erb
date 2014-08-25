@@ -4,14 +4,14 @@
 	</div>
 	<div class="small-1 column">
 		<%= link_to edit_todo_path(todo) do %>
-			<span data-tooltip aria-haspopup="true" class="has-tip" title="Edit">
+			<span title="Edit">
 				<%= content_tag(:i, '', :class => "fa fa-cog fa-lg") %>
 			</span>
 		<% end %>
 	</div>
 	<div class="small-1 column">
 		<%= link_to complete_todo_path(todo), method: :put, remote: true do %>
-			<span data-tooltip aria-haspopup="true" class="has-tip" title="Mark as completed!">
+			<span title="Mark as completed!">
 				<%= content_tag(:i, '', :class => "fa fa-check-square-o fa-lg") %>
 			</span>
 		<% end %>
