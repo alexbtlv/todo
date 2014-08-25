@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-	before_action :set_todo, only: [:show, :edit, :update, :destroy, :complete, :undo]
+	before_action :set_todo, only: [:edit, :update, :destroy, :complete, :undo]
 	before_filter :authenticate_user!
 	
 	def index
@@ -11,19 +11,17 @@ class TodosController < ApplicationController
 		@todo = current_user.todos.new
 	end
 
-	def show
-		
-	end
-
 	def edit
-		
+		if !current_user.admin?
+			redirect_to todos_path, alert: "You don't have permission to do that."
+		end
 	end
 
 	def create
 		@todo = current_user.todos.new(todo_params)
 
 		respond_to do |format|
-			if @todo.save
+			if @todo.save && current_user.admin?
 				format.html { redirect_to todos_path, notice: "Task was sucessfully created"}
 				format.js { }
 			else
@@ -34,24 +32,35 @@ class TodosController < ApplicationController
 	end
 
 	def update
-		respond_to do |format|
-	      if @todo.update(todo_params)
-	        format.html { redirect_to todos_path, notice: 'Task was successfully updated.' }
-	        format.js { }
-	      else
-	        format.html { render :edit }
-	        format.js { }
-	      end
-	    end
+		if current_user.admin?
+			respond_to do |format|
+		      if @todo.update(todo_params) && current_user.admin?
+		        format.html { redirect_to todos_path, notice: 'Task was successfully updated.' }
+		        format.js { }
+		      else
+		        format.html { render :edit }
+		        format.js { }
+		      end
+		    end
+		else
+			redirect_to todos_path, alert: "You don't have permission to do that."
+		end
 	end
 
 	def destroy
-		@todo.destroy
-
-	    respond_to do |format|
-	      format.html { redirect_to todos_path, notice: 'Task was successfully destroyed.' }
-	      format.js { }
-	    end
+		if current_user.admin?
+			respond_to do |format|
+				if @todo.destroy
+		    		format.html { redirect_to todos_path, notice: 'Task was successfully destroyed.' }
+		    		format.js { }
+		    	else
+		    		format.html { redirect_to todos_path, alert: 'Something went worng.' }
+		    		format.js { }
+		    	end
+		    end
+		else
+			redirect_to todos_path, alert: "You don't have permission to do that."
+		end
 	end
 
 	def complete
@@ -74,6 +83,14 @@ class TodosController < ApplicationController
 	end
 
 	private
+
+	def ensure_admin
+		if current_user.admin?
+			true
+		else
+			false
+		end
+	end
 
 	def todo_params
 		params[:todo].permit(:name)

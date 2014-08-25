@@ -10,8 +10,6 @@ class User < ActiveRecord::Base
 
   before_create :downcase_name, :downcase_email
 
-  Roles = %w[admin default]
-
   def to_param
     name
   end
@@ -25,6 +23,6 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    self.role == 'admin'
+    self.has_role? :admin
   end
 end
