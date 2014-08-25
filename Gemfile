@@ -35,3 +35,9 @@ group :test do
   gem "capybara-email"
   gem 'shoulda-matchers'
 end
+
+group :production do
+  gem 'rails_12factor'
+end
+
+ruby '2.1.2'
