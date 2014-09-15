@@ -1,3 +1,7 @@
 $('.todos #todo_<%= @todo.id %>').remove();
 $('#edit_form_todo_<%= @todo.id %>').show();
 $('#edit_form_todo_<%= @todo.id %>').append("<%= j render partial: 'form' %>");
+$("#closer").click(function(){
+	$("#form").slideUp('fast');
+	$('#todo').append('<%= j render(@todo) %>');
+});

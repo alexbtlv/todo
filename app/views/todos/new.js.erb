@@ -1,2 +1,6 @@
 $('#new_link').hide();
 $('#new_form').slideDown('fast').after('<%= j render("form") %>');
+$("#closer").click(function(){
+	$('#form').slideUp('fast');
+	$('#new_link').show();
+});

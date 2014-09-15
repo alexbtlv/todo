@@ -1,3 +1,4 @@
+<div id="form">
 <%= form_for @todo, remote: true do |f| %>
 	<div class="row collapse">
 		<div class="small-1 column">
@@ -9,8 +10,9 @@
 		<div class="small-2 column">
 			<%= f.submit "Save", class: "button postfix" %>
 		</div>
-		<div class="small-2 column">
-			<%= link_to "Close", root_path ,class: "button postfix secondary" %>
+		<div class="small-2 column" id="closer">
+			<a href="#" class="button postfix secondary">Close</a>
 		</div>
 	</div>
 <% end %>
+</div>
