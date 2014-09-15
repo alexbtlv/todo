@@ -3,11 +3,14 @@
 		<div class="small-1 column">
 			<%= f.label "todo:", :class => "left inline" %>
 		</div>
-		<div class="small-8 column">
+		<div class="small-7 column">
 			<%= f.text_field :name, :id => "right-label", autofocus: true %>
 		</div>
-		<div class="small-3 column">
+		<div class="small-2 column">
 			<%= f.submit "Save", class: "button postfix" %>
+		</div>
+		<div class="small-2 column">
+			<%= link_to "Close", root_path ,class: "button postfix secondary" %>
 		</div>
 	</div>
 <% end %>
